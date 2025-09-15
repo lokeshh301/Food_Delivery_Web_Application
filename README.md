@@ -1,6 +1,6 @@
 # 🍽️ Foodie - Food Delivery Web Application
 
-Welcome to Foodie, a Java Servlet and JSP based Food Delivery Web Application! This project allows users to browse restaurants, explore menus, add items to a cart, and place orders with ease. Built for simplicity and scalability, FooZee uses MVC design principles with a MySQL backend.
+Welcome to Foodie, a Java Servlet and JSP based Food Delivery Web Application! This project allows users to browse restaurants, explore menus, add items to a cart, and place orders with ease. Built for simplicity and scalability, Foodie uses MVC design principles with a MySQL backend.
 
 ---
 
