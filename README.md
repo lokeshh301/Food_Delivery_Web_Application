@@ -1,144 +1,113 @@
-Food Delivery Web Application - Foodie
+# 🍽️ Foodie - Food Delivery Web Application
 
-Project Overview
+Welcome to Foodie, a Java Servlet and JSP based Food Delivery Web Application! This project allows users to browse restaurants, explore menus, add items to a cart, and place orders with ease. Built for simplicity and scalability, FooZee uses MVC design principles with a MySQL backend.
 
-Foodie is a Java Servlet-based web application for food delivery. This app allows users to browse restaurants, view restaurant menus, add items to a cart, and place orders. The project features dynamic webpages built with JSP, a MySQL backend, and follows MVC architecture with DAOs handling database operations.
+---
 
-Features
+## 🚀 Features
 
-User registration, authentication, and profile management (implied from user model).
+- Dynamic listing of restaurants with details: cuisine, rating, and delivery times  
+- Restaurant-specific menus showing item name, description, price, availability & ratings  
+- Cart functionality supporting add, update quantity, and remove items  
+- Calculates subtotal, delivery fee, and GST tax on the order total  
+- Clean DAO design pattern managing CRUD for users, restaurants, and menus  
+- Servlets efficiently manage all main workflows (home, menu, cart)  
+- Responsive web pages with intuitive navigation and modern styling  
+- Supports image display for restaurants and menu items  
 
-List and view restaurants with details including cuisine, rating, and delivery time.
+---
 
-View restaurant-specific menus with images, descriptions, price, availability, and ratings.
+## 🗃️ Database Structure
 
-Add menu items to a cart with quantity updates and item removal.
+### Tables
 
-Cart price calculation including order summary with GST tax.
+**User**  
 
-Admin portals for managing restaurants, menus, and users (based on DAO interfaces).
+| Column         | Type       | Description                      |
+| -------------- | ---------- | -------------------------------|
+| `user_id`      | INT (PK)   | Unique user identifier           |
+| `user_name`    | VARCHAR    | Username                        |
+| `password`     | VARCHAR    | User password                   |
+| `email`        | VARCHAR    | User email                     |
+| `phone_number` | VARCHAR    | Phone number                   |
+| `address`      | VARCHAR    | User address                   |
+| `role`         | VARCHAR    | Role (admin, customer, etc.)   |
+| `created_date` | TIMESTAMP  | Account creation timestamp     |
+| `last_login_date` | TIMESTAMP| Last login timestamp           |
 
-Responsive front-end navigation and layout using HTML, CSS, and Font Awesome icons.
+**Restaurant**  
 
-Technologies Used
+| Column          | Type       | Description                      |
+| --------------- | ---------- | ------------------------------ |
+| `restaurant_id` | INT (PK)   | Unique restaurant ID             |
+| `name`          | VARCHAR    | Restaurant name                 |
+| `address`       | VARCHAR    | Location/address                |
+| `phone_number`  | VARCHAR    | Contact phone number            |
+| `cuisine_type`  | VARCHAR    | Type of cuisine                |
+| `delivery_time` | VARCHAR    | Estimated delivery duration     |
+| `admin_user_id` | INT        | Admin user foreign key          |
+| `rating`        | VARCHAR    | Average rating                 |
+| `is_active`     | VARCHAR    | Active status flag             |
+| `image_path`    | VARCHAR    | URL or path for image          |
 
-Java 17 (or compatible)
+**Menu**  
 
-Jakarta Servlet API
+| Column         | Type       | Description                      |
+| -------------- | ---------- | ------------------------------- |
+| `menu_id`      | INT (PK)   | Unique menu item ID              |
+| `restaurant_id`| INT (FK)   | Links to restaurant             |
+| `item_name`    | VARCHAR    | Menu item name                 |
+| `description`  | TEXT       | Description of the menu item    |
+| `price`       | VARCHAR     | Price of the item               |
+| `is_available` | VARCHAR    | Availability flag              |
+| `rating`      | VARCHAR     | Item rating                   |
+| `image_path`   | VARCHAR    | Image path or URL for the item |
 
-JSP (JavaServer Pages)
+---
 
-MySQL Database
+## ⚙️ Setup & Installation
 
-JDBC for database connectivity
+1. **Database Setup**
+   
+   - Install MySQL and create database named `food_delivery_db`  
+   - Create tables `user`, `restaurant`, and `menu` with above schema  
+   - Optionally insert seed sample data  
 
-HTML, CSS, JavaScript for frontend
+2. **Configure Connection**
+   
+   - Modify `com.proj.util.Connections` with your DB credentials
+   - Like this in your file...
+      private static String url = "jdbc:mysql://localhost:3306/food_delivery_db";
+      private static String name = "root";
+      private static String pass = "your_password";
 
-Apache Tomcat or other Servlet container
+3. **Build & Deploy**
+   
+- Compile project classes  
+- Deploy to Servlet container (e.g., Apache Tomcat)  
 
-Project Structure
+4. **Run the Application**
 
-/src
-  /com.proj.DAO            - DAO interfaces for User, Menu, Restaurant
-  /com.proj.DOAImp         - DAO implementations handling database queries
-  /com.proj.models         - POJO classes for User, Menu, Restaurant, Cart, CartItem
-  /com.proj.Servlets       - Servlet classes managing requests for Home, Menu, Cart
-  /com.proj.util           - Utility for database connection
-/webapp
-  /Restaurant.jsp          - Displays list of restaurants
-  /Menu.jsp                - Displays menu for selected restaurant
-  /Cart.jsp                - Cart page managing current order items
-  /WEB-INF/web.xml         - Deployment descriptor configuration
-  
-Database Structure
+- Open in browser: `http://localhost:8080/your-app-context/HomeServlet`  
+- Browse restaurants, menus, and add to cart  
 
-Tables
+---
 
-user
+## 💡 Suggestions & Future Enhancements
 
-| Column | Data Type | Description |
-|------------------|---------------------|----------------------------|
-| user_id | INT, PRIMARY KEY | Unique User Identifier |
-| user_name | VARCHAR | Username |
-| password | VARCHAR | User Password |
-| email | VARCHAR | User Email |
-| phone_number | VARCHAR | Phone Number |
-| address | VARCHAR | User Address |
-| role | VARCHAR | User role (admin, customer)|
-| created_date | TIMESTAMP | Account creation timestamp |
-| last_login_date | TIMESTAMP | Last login timestamp |
+- Implement user authentication and secure login  
+- Add order placement, payment gateway integration, and order history  
+- Build admin dashboards for managing users, restaurants, and menus  
+- Use JavaScript frameworks for an enhanced frontend experience  
+- Add input validations and improve backend error handling  
+- Write unit and integration tests for robustness  
 
-restaurant
+---
 
-| Column | Data Type | Description |
-|----------------|---------------------|------------------------------|
-| restaurant_id | INT, PRIMARY KEY | Unique Restaurant ID |
-| name | VARCHAR | Restaurant Name |
-| address | VARCHAR | Address/location |
-| phone_number | VARCHAR | Contact Number |
-| cuisine_type | VARCHAR | Type of cuisine |
-| delivery_time | VARCHAR | Estimated delivery time |
-| admin_user_id | INT | Foreign key to Admin User |
-| rating | VARCHAR | Average restaurant rating |
-| is_active | VARCHAR | Status ('yes'/'no' or '1'/'0')|
-| image_path | VARCHAR | Path or URL to restaurant image|
+## 📞 Contact
 
-menu
+For questions or contributions, reach out to me.
 
-| Column | Data Type | Description |
-|----------------|--------------------|-------------------------------|
-| menu_id | INT, PRIMARY KEY | Unique menu item ID |
-| restaurant_id | INT | Foreign key linked to restaurant_id |
-| item_name | VARCHAR | Name of the menu item |
-| description | TEXT or VARCHAR | Description of the item |
-| price | VARCHAR | Price of the item |
-| is_available | VARCHAR | Availability ('yes' / 'no') |
-| rating | VARCHAR | Rating for the menu item |
-| image_path | VARCHAR | Path or URL for item image |
+---
 
-Setup and Installation
-
-Database Setup
-
-Install MySQL and create a database named food_delivery_db.
-
-Create the tables user, restaurant, and menu with the structure above.
-
-Optionally, insert seed data for initial testing.
-
-Configure Database Connection
-
-Update database credentials in com.proj.util.Connections:
-
-java
-private static String url = "jdbc:mysql://localhost:3306/food_delivery_db";
-private static String name = "root";
-private static String pass = "your_password";
-Build and Deploy
-
-Compile the Java classes.
-
-Deploy the WAR or project to a Servlet container (e.g., Apache Tomcat).
-
-Start the server.
-
-Access
-
-Navigate to the home page via servlet URL: http://localhost:8080/your-app-context/HomeServlet
-
-Browse restaurants, menus, and use cart functionality.
-
-Suggestions for Improvement
-
-Implement user authentication and session management.
-
-Add order placement, payment integration, and order history.
-
-Admin dashboard for managing users, restaurants, and menus.
-
-Enhance UI/UX with modern frontend frameworks like React or Angular.
-
-Validate inputs and improve error handling.
-
-Add unit and integration testing.
-
+© 2025 Lokeshkumar — All rights reserved. ❤️
