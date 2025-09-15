@@ -1,0 +1,180 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.bike-container {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.road {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #ccc;
+}
+
+.bike {
+    position: absolute;
+    left: -150px; /* Start off-screen */
+    bottom: 40px;
+    font-size: 50px;
+    color: #333;
+    animation: rideBike 3s ease-in-out forwards;
+}
+
+.bike i {
+    animation: bounce 0.4s infinite alternate;
+}
+
+.celebration {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: #28a745;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: celebrate 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+    animation-delay: 3s; /* Start after bike animation */
+}
+
+.container {
+    max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 3.5s; /* Start after celebration */
+}
+
+h1 {
+    color: #343a40;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.order-details h3 {
+    color: #495057;
+    margin: 12px 0;
+    font-size: 1.1em;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideIn 0.6s forwards;
+}
+
+.order-details h3 span {
+    color: #212529;
+    font-weight: normal;
+    float: right;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #28a745, #218838);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+    animation-delay: 4s; /* Start last */
+    text-decoration: none;
+}
+
+.home-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+}
+
+.home-button i {
+    margin-right: 8px;
+}
+
+/* Animations */
+@keyframes rideBike {
+    0% {
+        transform: translateX(0) scale(0.8);
+    }
+    100% {
+        transform: translateX(110vw) scale(1.2); /* Ride across and slightly grow */
+    }
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-5px); }
+}
+
+@keyframes celebrate {
+    from {
+        opacity: 0;
+        transform: scale(0.5) rotate(-15deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}

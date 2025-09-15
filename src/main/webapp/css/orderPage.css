@@ -1,0 +1,163 @@
+@charset "UTF-8";
+        :root {
+            --primary-color: #FF4B2B;
+            --secondary-color: #FF416C;
+            --white-color: #FFFFFF;
+            --light-gray-color: #EEEEEE;
+            --gray-color: #333;
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
+            --info-color: #3498db;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f6f5f7;
+            color: var(--gray-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            
+        }
+
+        nav h1 {
+            margin: 0;
+            font-size: 2em;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 100px auto;
+            background-color: var(--white-color);
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            flex: 1; /* Allow container to grow and fill vertical space */
+        }
+
+        h2 {
+            font-size: 2.2em;
+            margine: 50px;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .order-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .order-item {
+            background-color: #fdfdfd;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .order-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .order-details {
+            flex: 3;
+            margin-right: 20px;
+        }
+
+        .order-actions {
+            flex: 1;
+            text-align: right;
+        }
+
+        .order-actions button {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .order-actions button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .order-meta {
+            font-size: 0.85em;
+            color: var(--gray-color);
+            margin-top: 5px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+        }
+
+        .status-delivered {
+            color: var(--success-color);
+        }
+
+        .status-shipped {
+            color: var(--info-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .order-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .order-details {
+                margin-right: 0;
+            }
+
+            .order-actions {
+                text-align: left;
+                width: 100%;
+            }
+
+            .order-actions button {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--gray-color);
+            background-color: var(--light-gray-color);
+            margin-top: 30px;
+        }
